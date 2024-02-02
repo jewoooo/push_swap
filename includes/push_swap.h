@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:39:56 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/02 16:09:00 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/02 18:01:32 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "../ft_printf/ft_printf.h"
+# include "../printf/ft_printf.h"
 
 typedef struct	s_node
 {

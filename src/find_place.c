@@ -1,50 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   find_place.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 21:59:37 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/02 20:40:23 by jewlee           ###   ########.fr       */
+/*   Created: 2024/02/02 18:13:48 by jewlee            #+#    #+#             */
+/*   Updated: 2024/02/02 20:40:22 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	check_duplicate(t_stack *stack, int num)
+int	find_index(t_stack *stack, int num)
 {
-	int		i;
-	t_node	*temp;
+	int	i;
 
-	if (stack->size == 0)
-		return (0);
 	i = 0;
-	temp = stack->bottom;
-	while (i < stack->size)
+	while (stack->data != num)
 	{
-		if (temp->data == num)
-			return (1);
-		temp = temp->next;
 		i++;
+		stack = stack->next;
 	}
-	return (0);
+	stack->
 }
 
-int	check_sorted(t_stack *stack)
+int	find_place_b(t_stack *b, int num)
 {
-	int		num;
-	t_node	*node;
+	int			i;
+	t_stack		*tmp;
 
-	node = stack->top;
-	num = node->data;
-	node = node->prev;
-	while (node != stack->top)
-	{
-		if (num > node->data)
-			return (0);
-		num = node->data;
-		node = node->prev;
-	}
-	return (1);
+	i = 1;
+	if (num > b->top->data && num < b->bottom->data)
+		i = 0;
+	else if (num > max(b) || num < min(b))
+		i = find_index(b, max(b));
+	else
 }
