@@ -6,11 +6,11 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 22:25:53 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/01 06:26:26 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/02 16:45:40 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../includes/push_swap.h"
 
 static int	rotate(t_stack **stack)
 {

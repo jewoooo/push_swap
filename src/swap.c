@@ -6,11 +6,11 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 22:05:05 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/01 06:26:27 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/02 16:33:55 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../includes/push_swap.h"
 
 static int	swap(t_stack **stack)
 {

@@ -6,11 +6,11 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:59:37 by jewlee            #+#    #+#             */
-/*   Updated: 2024/01/31 22:09:19 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/02 16:32:22 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../includes/push_swap.h"
 
 int	check_duplicate(t_stack *stack, int num)
 {
@@ -29,4 +29,22 @@ int	check_duplicate(t_stack *stack, int num)
 		i++;
 	}
 	return (0);
+}
+
+int	check_sorted(t_stack *stack)
+{
+	t_node	*node;
+	int	num;
+
+	node = stack->bottom;
+	num = node->data;
+	node = node->next;
+	while (node != stack->bottom)
+	{
+		if (num > node->data)
+			return (0);
+		num = node->data;
+		node = node->next;
+	}
+	return (1);
 }

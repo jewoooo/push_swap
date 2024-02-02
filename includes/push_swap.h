@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:39:56 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/01 06:26:17 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/02 16:09:00 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ typedef struct	s_stack
 int	create_stack(t_stack **stack);
 int	push_front(t_stack **stack, int num);
 
-int	check_duplicate(t_stack *stack, int num);
+int		check_duplicate(t_stack *stack, int num);
+int		check_sorted(t_stack *stack);
+
+void	sort_two(t_stack **stack_a);
+void	sort_three(t_stack **a);
 
 void	sa(t_stack **stack_a);
 void	sb(t_stack **stack_b);

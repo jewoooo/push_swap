@@ -6,11 +6,11 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:42:02 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/01 06:26:26 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/02 16:45:42 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../includes/push_swap.h"
 
 int	create_stack(t_stack **stack)
 {
