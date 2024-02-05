@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:42:02 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/02 16:45:42 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 15:15:15 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	push_front(t_stack **stack, int num)
 	if (new_node == NULL)
 		return (1);
 	new_node->data = num;
+	new_node->index = 0;
 	if ((*stack)->bottom == NULL)
 	{
 		(*stack)->top = new_node;

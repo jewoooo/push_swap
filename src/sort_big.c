@@ -6,11 +6,40 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:10:16 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/05 13:23:38 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 15:52:39 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	push_b_till_3(t_stack **a, t_stack **b)
+{
+	t_node	*tmp;
+	int		times;
+
+	while ((*a)->size > 3 && is_sorted(*a) == 0)
+	{
+		tmp = (*a)->top;
+		times = calculate_without_push(*a, *b);
+	}
+}
+
+void	a_to_b(t_stack **a, t_stack **b)
+{
+	if ((*a)->size > 3 && is_sorted(*a) == 0)
+		pb(b, a);
+	if ((*a)->size > 3 && is_sorted(*a) == 0)
+		pb(b, a);
+	if ((*a)->size > 3 && is_sorted(*a) == 0)
+		push_b_till_3(a, b);
+	if ((*a)->size == 3 && is_sorted(*a) == 0)
+		sort_three(a);
+}
+
+void	b_to_a(t_stack **b, t_stack *a)
+{
+	
+}
 
 int	sort(t_stack **stack_a)
 {
@@ -24,8 +53,8 @@ int	sort(t_stack **stack_a)
 	{
 		if (create_stack(&stack_b) == 1)
 			return (1);
-		sort_a_to_b(stack_a, &stack_b);
-		sort_b_to_a(stack_a, &stack_b);
+		a_to_b(a, &b);
+		b_to_a(&b, a);
 	}
 	return (0);
 }
