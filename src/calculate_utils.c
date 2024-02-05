@@ -1,23 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve_ab.c                                         :+:      :+:    :+:   */
+/*   calculate_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 18:11:21 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/02 18:12:57 by jewlee           ###   ########.fr       */
+/*   Created: 2024/02/05 13:12:48 by jewlee            #+#    #+#             */
+/*   Updated: 2024/02/05 14:57:07 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	case_rrarrb(t_stack *a, t_stack *b)
-{
-	int	i;
-	int	num;
+#include "../includes/push_swap.h"
 
-	i = 0;
-	num = a->data;
-	if (find_place_b(b, num))
-		i = b->size - find_place_b(b, num);
-
-}

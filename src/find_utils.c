@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:51 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/02 20:40:21 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 14:02:30 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ int	max(t_stack *stack)
 	int		num;
 	t_node	*tmp;
 
-	tmp = stack->bottom;
+	tmp = stack->top;
 	num = tmp->data;
-	tmp = tmp->next;
+	tmp = tmp->prev;
 	while (tmp != stack->top)
 	{
 		if (num < tmp->data)
 			num = tmp->data;
-		tmp = tmp->next;
+		tmp = tmp->prev;
 	}
 	return (num);
 }
@@ -34,14 +34,14 @@ int	min(t_stack *stack)
 	int		num;
 	t_node	*tmp;
 
-	tmp = stack->bottom;
+	tmp = stack->top;
 	num = tmp->data;
-	tmp = tmp->next;
+	tmp = tmp->prev;
 	while (tmp != stack->top)
 	{
 		if (num > tmp->data)
 			num = tmp->data;
-		tmp = tmp->next;
+		tmp = tmp->prev;
 	}
 	return (num);
 }
