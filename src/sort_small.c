@@ -6,16 +6,16 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:48:15 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/02 18:01:49 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 23:30:55 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sort_two(t_stack **stack_a)
+void	sort_two(t_stack **a)
 {
-	if ((*stack_a)->top->data > (*stack_a)->bottom->data)
-		sa(stack_a);
+	if ((*a)->top->data > (*a)->bottom->data)
+		sa(a);
 }
 
 void	sort_three(t_stack **a)

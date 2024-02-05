@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:42:02 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/05 15:15:15 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 23:42:03 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,34 @@ int	create_stack(t_stack **stack)
 {
 	(*stack) = (t_stack *)malloc(sizeof(t_stack));
 	if ((*stack) == NULL)
-		return (1);
+		return (0);
 	(*stack)->size = 0;
 	(*stack)->top = NULL;
 	(*stack)->bottom = NULL;
-	return (0);
+	return (1);
+}
+
+void	free_stack(t_stack **stack)
+{
+	t_node	*tmp;
+	t_node	*for_free;
+	int		i;
+
+	if ((*stack)->size != 0)
+	{
+		for_free = (*stack)->bottom;
+		i = (*stack)->size;
+		while (i > 1)
+		{
+			tmp = for_free->next;
+			free(for_free);
+			for_free = tmp;
+			i--;
+		}
+		free(for_free);
+	}
+	free(*stack);
+	(*stack) = NULL;
 }
 
 int	push_front(t_stack **stack, int num)
@@ -31,7 +54,7 @@ int	push_front(t_stack **stack, int num)
 		return (1);
 	new_node = (t_node *)malloc(sizeof(t_node));
 	if (new_node == NULL)
-		return (1);
+		return (0);
 	new_node->data = num;
 	new_node->index = 0;
 	if ((*stack)->bottom == NULL)
@@ -49,5 +72,5 @@ int	push_front(t_stack **stack, int num)
 	}
 	(*stack)->bottom = new_node;
 	((*stack)->size)++;
-	return (0);
+	return (1);
 }

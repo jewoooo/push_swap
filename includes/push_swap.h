@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:39:56 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/05 15:40:15 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 23:39:06 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,39 @@ typedef struct	s_stack
 	t_node	*bottom;
 }	t_stack;
 
-int	create_stack(t_stack **stack);
-int	push_front(t_stack **stack, int num);
+int		create_stack(t_stack **stack);
+int		push_front(t_stack **stack, int num);
+void	free_stack(t_stack **stack);
 
-int		check_duplicate(t_stack *stack, int num);
-int		check_sorted(t_stack *stack);
+int		calculate_cheapest_ab(t_stack *a, t_stack *b);
+int		calculate_cheapest_ba(t_stack *b, t_stack *a);
 
-void	sort_two(t_stack **stack_a);
+int		case_rarb(t_stack *a, t_stack *b, int num);
+int		case_rrarrb(t_stack *a, t_stack *b, int num);
+int		case_rrarb(t_stack *a, t_stack *b, int num);
+int		case_rarrb(t_stack *a, t_stack *b, int num);
+int		case_rarb_a(t_stack *b, t_stack *a, int num);
+int		case_rrarrb_a(t_stack *b, t_stack *a, int num);
+int		case_rrarb_a(t_stack *b, t_stack *a, int num);
+int		case_rarrb_a(t_stack *b, t_stack *a, int num);
+
+int		do_rarb(t_stack **a, t_stack **b, int num, char c);
+int		do_rrarrb(t_stack **a, t_stack **b, int num, char c);
+int		do_rrarb(t_stack **a, t_stack **b, int num, char c);
+int		do_rarrb(t_stack **a, t_stack **b, int num, char c);
+
+int		is_sorted(t_stack *stack);
+
+int		find_index(t_stack *stack, int num);
+int		find_place_b(t_stack *b, int num);
+int		find_place_a(t_stack *a, int num);
+
+void	sort_two(t_stack **a);
 void	sort_three(t_stack **a);
+int		sort(t_stack **stack_a);
+void	a_to_b(t_stack **a, t_stack **b);
+void	b_to_a(t_stack **b, t_stack **a);
+void	push_b_till_3(t_stack **a, t_stack **b);
 
 void	sa(t_stack **stack_a);
 void	sb(t_stack **stack_b);

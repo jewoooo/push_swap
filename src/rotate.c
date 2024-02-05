@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 22:25:53 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/05 14:57:35 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 23:25:43 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,4 @@ void	rr(t_stack **stack_a, t_stack **stack_b)
 	rotate(stack_a);
 	rotate(stack_b);
 	ft_printf("rr\n");
+}

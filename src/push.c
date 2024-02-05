@@ -6,13 +6,13 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 06:07:05 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/05 13:19:28 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/05 23:30:11 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	push(t_stack **from, t_stack **to)
+static int	push(t_stack **from, t_stack **to)
 {
 	t_node	*from_top;
 
