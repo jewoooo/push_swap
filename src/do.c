@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 22:44:49 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/06 13:54:11 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 23:13:13 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	do_rarb(t_stack **a, t_stack **b, int num, char c)
 {
 	if (c == 'a')
 	{
-		while ((*a)->top->data != num && find_place_b (*b, num) > 0)
+		while ((*a)->top->data != num && find_place_b(*b, num) > 0)
 			rr(a, b);
 		while ((*a)->top->data != num)
 			ra(a);
 		while (find_place_b(*b, num) > 0)
 			rb(b);
-		pb(b, a);
+		pb(a, b);
 	}
 	else
 	{
@@ -47,7 +47,7 @@ int	do_rrarrb(t_stack **a, t_stack **b, int num, char c)
 			rra(a);
 		while (find_place_b(*b, num) > 0)
 			rrb(b);
-		pb(b, a);
+		pb(a, b);
 	}
 	else
 	{
@@ -70,7 +70,7 @@ int	do_rrarb(t_stack **a, t_stack **b, int num, char c)
 			rra(a);
 		while (find_place_b(*b, num) > 0)
 			rb(b);
-		pb(b, a);
+		pb(a, b);
 	}
 	else
 	{
@@ -91,7 +91,7 @@ int	do_rarrb(t_stack **a, t_stack **b, int num, char c)
 			ra(a);
 		while (find_place_b(*b, num) > 0)
 			rrb(b);
-		pb(b, a);
+		pb(a, b);
 	}
 	else
 	{

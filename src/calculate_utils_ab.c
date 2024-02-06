@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:12:48 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/05 23:26:48 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 23:00:49 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int	case_rarb(t_stack *a, t_stack *b, int num)
 {
 	int	times;
 
-	times = 0;
-	times = find_index(a, num) + find_place_b(b, num);
+	times = find_place_b(b, num);
+	if (times < find_index(a, num))
+		times = find_index(a, num);
 	return (times);
 }
 
@@ -28,8 +29,8 @@ int	case_rrarrb(t_stack *a, t_stack *b, int num)
 	times = 0;
 	if (find_place_b(b, num) != 0)
 		times = b->size - find_place_b(b, num);
-	if (find_index(a, num) != 0)
-		times += (a->size - find_index(a, num));
+	if (times < (a->size - find_index(a, num) && find_index(a, num) != 0))
+		times = (a->size - find_index(a, num));
 	return (times);
 }
 
