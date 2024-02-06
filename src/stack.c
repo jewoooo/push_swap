@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:42:02 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/05 23:42:03 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 12:32:12 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,24 @@ void	free_stack(t_stack **stack)
 	t_node	*for_free;
 	int		i;
 
-	if ((*stack)->size != 0)
+	if (*stack != NULL)
 	{
-		for_free = (*stack)->bottom;
-		i = (*stack)->size;
-		while (i > 1)
+		if ((*stack)->size != 0)
 		{
-			tmp = for_free->next;
+			for_free = (*stack)->bottom;
+			i = (*stack)->size;
+			while (i > 1)
+			{
+				tmp = for_free->next;
+				free(for_free);
+				for_free = tmp;
+				i--;
+			}
 			free(for_free);
-			for_free = tmp;
-			i--;
 		}
-		free(for_free);
+		free(*stack);
+		(*stack) = NULL;
 	}
-	free(*stack);
-	(*stack) = NULL;
 }
 
 int	push_front(t_stack **stack, int num)

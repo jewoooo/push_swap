@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:39:56 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/05 23:39:06 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 12:34:13 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int		create_stack(t_stack **stack);
 int		push_front(t_stack **stack, int num);
 void	free_stack(t_stack **stack);
 
+void	print_error(void);
+
 int		calculate_cheapest_ab(t_stack *a, t_stack *b);
 int		calculate_cheapest_ba(t_stack *b, t_stack *a);
 
@@ -52,7 +54,12 @@ int		do_rrarrb(t_stack **a, t_stack **b, int num, char c);
 int		do_rrarb(t_stack **a, t_stack **b, int num, char c);
 int		do_rarrb(t_stack **a, t_stack **b, int num, char c);
 
+int		atoi_for_push_swap(const char *str);
 int		is_sorted(t_stack *stack);
+int		is_duplicated(int *array, int n);
+
+int		parsing_to_stack(t_stack **a, int argc, char **argv);
+int		parsing_to_array(int **array, int argc, char **argv);
 
 int		find_index(t_stack *stack, int num);
 int		find_place_b(t_stack *b, int num);

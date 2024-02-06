@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 15:40:58 by jewlee            #+#    #+#             */
-/*   Updated: 2023/11/23 17:13:55 by jewlee           ###   ########.fr       */
+/*   Created: 2024/02/06 10:41:16 by jewlee            #+#    #+#             */
+/*   Updated: 2024/02/06 11:20:39 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../includes/push_swap.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include "./libft/libft.h"
-
-int		ft_printf(const char *format, ...);
-int		printf_c(char c, int len);
-int		printf_s(char *s, int len);
-int		printf_u(unsigned int num, int len);
-int		printf_hex(unsigned int num, char c, int len);
-int		printf_p(void *ptr, int len);
-
-char	*ft_itoa(int num);
-
-#endif
+void	print_error(void)
+{
+	ft_printf("Error\n");
+}
