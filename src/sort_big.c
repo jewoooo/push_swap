@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:10:16 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/06 13:59:55 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 16:22:30 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ void	push_b_till_3(t_stack **a, t_stack **b)
 void	a_to_b(t_stack **a, t_stack **b)
 {
 	if ((*a)->size > 3 && is_sorted(*a) == 0)
-		pb(b, a);
+		pb(a, b);
 	if ((*a)->size > 3 && is_sorted(*a) == 0)
-		pb(b, a);
+		pb(a, b);
 	if ((*a)->size > 3 && is_sorted(*a) == 0)
 		push_b_till_3(a, b);
-	if ((*a)->size == 3 && is_sorted(*a) == 0)
+	if ((*a)->size == 3)
 		sort_three(a);
 }
 

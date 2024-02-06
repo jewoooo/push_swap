@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:42:02 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/06 14:00:24 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 14:38:33 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	push_front(t_stack **stack, int num)
 	if (new_node == NULL)
 		return (0);
 	new_node->data = num;
-	if ((*stack)->bottom == NULL)
+	if ((*stack)->size == 0)
 	{
 		(*stack)->top = new_node;
 		new_node->prev = new_node;
@@ -67,7 +67,7 @@ int	push_front(t_stack **stack, int num)
 	{
 		new_node->next = (*stack)->bottom;
 		new_node->prev = (*stack)->top;
-		(*stack)->top->prev = new_node;
+		(*stack)->top->next = new_node;
 		(*stack)->bottom->prev = new_node;
 	}
 	(*stack)->bottom = new_node;

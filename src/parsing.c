@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:12:34 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/06 13:58:12 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 15:05:49 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,16 @@ int	parsing_to_array(int **array, int size, char **argv)
 	int		i;
 	int		tmp;
 
+	(*array) = (int *)malloc(sizeof(int) * (size));
+	if ((*array) == NULL)
+		return (0);
 	i = 0;
 	while (i < size)
 	{
 		tmp = atoi_for_push_swap(argv[i]);
 		if (tmp == 0)
 			return (0);
-		(*array) = (int *)malloc(sizeof(int) * (size));
-		if ((*array) == NULL)
-			return (0);
-		(*array)[i - 1] = tmp;
+		(*array)[i] = tmp;
 		i++;
 	}
 	if (is_duplicated(*array, size) == 1)
@@ -86,12 +86,12 @@ int	parsing_to_stack(t_stack **a, int argc, char **argv)
 		return (0);
 	}
 	i = 0;
-	while (i < argc - 1)
+	while (i < argc)
 	{
 		if (push_front(a, array[i]) == 0)
 		{
-			if (array != NULL)
-				free(array);
+			free(array);
+			free_stack(a);
 			return (0);
 		}
 		i++;
