@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 06:07:05 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/05 23:30:11 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 12:44:14 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	pa(t_stack **stack_a, t_stack **stack_b)
 {
 	if (push(stack_a, stack_b) == 1)
 		return ;
-	ft_printf("pa\n");
+	ft_putendl_fd("pa", 1);
 }
 
 void	pb(t_stack **stack_b, t_stack **stack_a)
 {
 	if (push(stack_b, stack_a) == 1)
 		return ;
-	ft_printf("pb\n");
+	ft_putendl_fd("pb", 1);
 }

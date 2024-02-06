@@ -1,26 +1,28 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/06 12:38:52 by jewlee            #+#    #+#              #
-#    Updated: 2024/02/06 12:39:43 by jewlee           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 MAKE_CUR = make -C
-PRINTF_DIR = ./printf
-LIBFTPRINTF = ./printf/libftprintf.a
 LIBFT_DIR = ./libft
 LIBFT = ./libft/libft.a
-SRCS = ./ft_printf.c ./ft_printf_utils1.c ./ft_printf_utils2.c
+SRCS = ./src/main.c \
+		./src/calculate_utils_ab.c \
+		./src/calculate_utils_ba.c \
+		./src/calculate.c \
+		./src/check.c \
+		./src/do.c \
+		./src/find_utils.c \
+		./src/find.c \
+		./src/parsing.c \
+		./src/push.c \
+		./src/reverse_rotate.c \
+		./src/rotate.c \
+		./src/sort_big.c \
+		./src/sort_small.c \
+		./src/stack.c \
+		./src/swap.c
 OBJS = $(SRCS:.c=.o)
+INCLUDE = -L ./libft -lft
 
 all : $(NAME)
 
@@ -28,8 +30,7 @@ $(NAME) : make_mandatory
 
 make_mandatory : $(OBJS)
 	@ $(MAKE_CUR) $(LIBFT_DIR) bonus > /dev/null
-	cp $(LIBFT) $(NAME)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDE)
 	touch make_mandatory
 
 %.o : %.c

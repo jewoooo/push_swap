@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 22:05:05 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/05 13:21:02 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 14:03:01 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,19 @@ void	sa(t_stack **stack_a)
 {
 	if (swap(stack_a) == 1)
 		return ;
-	ft_printf("sa\n");
+	ft_putendl_fd("sa", 1);
 }
 
 void	sb(t_stack **stack_b)
 {
 	if (swap(stack_b) == 1)
 		return ;
-	ft_printf("sb\n");
+	ft_putendl_fd("sb", 1);
 }
 
 void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);
-	ft_printf("ss\n");
+	ft_putendl_fd("ss", 1);
 }

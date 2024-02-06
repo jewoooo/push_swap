@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:39:56 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/06 12:34:13 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 13:55:55 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "../printf/ft_printf.h"
+# include "../libft/libft.h"
 
 typedef struct	s_node
 {
@@ -34,8 +34,6 @@ typedef struct	s_stack
 int		create_stack(t_stack **stack);
 int		push_front(t_stack **stack, int num);
 void	free_stack(t_stack **stack);
-
-void	print_error(void);
 
 int		calculate_cheapest_ab(t_stack *a, t_stack *b);
 int		calculate_cheapest_ba(t_stack *b, t_stack *a);
@@ -61,6 +59,8 @@ int		is_duplicated(int *array, int n);
 int		parsing_to_stack(t_stack **a, int argc, char **argv);
 int		parsing_to_array(int **array, int argc, char **argv);
 
+int		max(t_stack *stack);
+int		min(t_stack *stack);
 int		find_index(t_stack *stack, int num);
 int		find_place_b(t_stack *b, int num);
 int		find_place_a(t_stack *a, int num);

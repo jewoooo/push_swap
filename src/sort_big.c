@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:10:16 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/05 23:48:36 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 13:59:55 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	b_to_a(t_stack **b, t_stack **a)
 	}
 	if ((*b)->size == 0)
 		free_stack(b);
-	return (a);
 }
 
 int	sort(t_stack **stack_a)
@@ -90,17 +89,17 @@ int	sort(t_stack **stack_a)
 	{
 		if (create_stack(&stack_b) == 0)
 			return (0);
-		a_to_b(a, &b);
-		b_to_a(&b, a);
+		a_to_b(stack_a, &stack_b);
+		b_to_a(&stack_b, stack_a);
 		min_location = find_index(*stack_a, min(*stack_a));
-		if (min_location < (*a)->size - min_location)
-			while ((*stack_a)->data != min((*stack_a)))
+		if (min_location < (*stack_a)->size - min_location)
+			while ((*stack_a)->top->data != min((*stack_a)))
 				ra(stack_a);
 		else
-			while ((*stack_a)->data != min((*stack_a)))
+			while ((*stack_a)->top->data != min((*stack_a)))
 				rra(stack_a);
 	}
-	if (is_sorted(stack_a) == 0)
+	if (is_sorted(*stack_a) == 0)
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:12:34 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/06 12:34:41 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 13:58:12 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,26 @@ int	change_to_index(int **array, int size)
 	return (1);
 }
 
-int	parsing_to_array(int **array, int argc, char **argv)
+int	parsing_to_array(int **array, int size, char **argv)
 {
-	int	i;
-	int	tmp;
+	int		i;
+	int		tmp;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (i < size)
 	{
 		tmp = atoi_for_push_swap(argv[i]);
 		if (tmp == 0)
 			return (0);
-		(*array) = (int *)malloc(sizeof(int) * (argc - 1));
+		(*array) = (int *)malloc(sizeof(int) * (size));
 		if ((*array) == NULL)
 			return (0);
 		(*array)[i - 1] = tmp;
 		i++;
 	}
-	if (is_duplicated(*array, argc - 1) == 1)
+	if (is_duplicated(*array, size) == 1)
 		return (0);
-	if (change_to_index(array, argc - 1) == 0)
+	if (change_to_index(array, size) == 0)
 		return (0);
 	return (1);
 }
@@ -80,12 +80,20 @@ int	parsing_to_stack(t_stack **a, int argc, char **argv)
 	int		*array;
 
 	if (parsing_to_array(&array, argc, argv) == 0)
+	{
+		if (array != NULL)
+			free(array);
 		return (0);
+	}
 	i = 0;
 	while (i < argc - 1)
 	{
 		if (push_front(a, array[i]) == 0)
+		{
+			if (array != NULL)
+				free(array);
 			return (0);
+		}
 		i++;
 	}
 	free(array);

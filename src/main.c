@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:21:18 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/06 12:30:46 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 13:51:26 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,22 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 	{
-		ft_printf("Error\n");
+		ft_putendl_fd("Error", 2);
 		return (1);
 	}
-	if (parsing_to_stack(&stack_a, argc, argv) == 0)
+	argv++;
+	if (parsing_to_stack(&stack_a, argc - 1, argv) == 0)
 	{
-		ft_printf("Error\n");
+		free_stack(&stack_a);
+		ft_putendl_fd("Error", 2);
 		return (1);
 	}
-	if (sort(&a) == 0);
+	if (sort(&stack_a) == 0)
 	{
-		ft_printf("Error\n");
+		free_stack(&stack_a);
+		ft_putendl_fd("Error", 2);
 		return (1);
 	}
-	free_stack(&a);
+	free_stack(&stack_a);
 	return (0);
 }

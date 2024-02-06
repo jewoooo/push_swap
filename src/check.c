@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:59:37 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/06 12:34:03 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 13:52:44 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	atoi_for_push_swap(const char *str)
 	}
 	if (flag == 1)
 		res *= (-1);
-	if (res > 2147483647 && res < -2147483648)
+	if (res > 2147483647 || res < -2147483648)
 		return (0);
 	return ((int)res);
 }

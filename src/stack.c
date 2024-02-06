@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:42:02 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/06 12:32:12 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/06 14:00:24 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,10 @@ int	push_front(t_stack **stack, int num)
 {
 	t_node	*new_node;
 
-	if (check_duplicate(*stack, num) == 1)
-		return (1);
 	new_node = (t_node *)malloc(sizeof(t_node));
 	if (new_node == NULL)
 		return (0);
 	new_node->data = num;
-	new_node->index = 0;
 	if ((*stack)->bottom == NULL)
 	{
 		(*stack)->top = new_node;
