@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:59:37 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/06 13:52:44 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/07 13:16:28 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,20 @@ int	is_duplicated(int *array, int n)
 
 int	is_sorted(t_stack *stack)
 {
-	int		num;
-	t_node	*tmp;
+	t_node	*tmp1;
+	t_node	*tmp2;
+	int		i;
 
-	num = stack->bottom->data;
-	tmp = stack->bottom->next;
-	while (tmp != stack->bottom)
+	tmp1 = stack->bottom;
+	tmp2 = stack->bottom->next;
+	i = 1;
+	while (i < stack->size)
 	{
-		if (num < tmp->data)
+		if (tmp1->data < tmp2->data)
 			return (0);
-		tmp = tmp->next;
+		tmp1 = tmp1->next;
+		tmp2 = tmp2->next;
+		i++;
 	}
 	return (1);
 }

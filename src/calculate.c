@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:02:41 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/05 23:21:12 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/07 16:18:51 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,25 @@ int	calculate_cheapest_ab(t_stack *a, t_stack *b)
 
 int	calculate_cheapest_ba(t_stack *b, t_stack *a)
 {
-	int		min;
+	int		cheapest;
 	int		size;
 	t_node	*tmp;
 
 	tmp = b->top;
 	size = b->size;
-	min = case_rrarrb_a(b, a, tmp->data);
+	cheapest = case_rrarrb_a(b, a, tmp->data);
 	while (size > 0)
 	{
-		if (min > case_rarb_a(b, a, tmp->data))
-			min = case_rarb_a(b, a, tmp->data);
-		if (min > case_rrarrb_a(b, a, tmp->data))
-			min = case_rrarrb_a(b, a, tmp->data);
-		if (min > case_rarrb_a(b, a, tmp->data))
-			min = case_rarrb_a(b, a, tmp->data);
-		if (min > case_rrarb_a(b, a, tmp->data))
-			min = case_rarrb_a(b, a, tmp->data);
+		if (cheapest > case_rarb_a(b, a, tmp->data))
+			cheapest = case_rarb_a(b, a, tmp->data);
+		if (cheapest > case_rrarrb_a(b, a, tmp->data))
+			cheapest = case_rrarrb_a(b, a, tmp->data);
+		if (cheapest > case_rarrb_a(b, a, tmp->data))
+			cheapest = case_rarrb_a(b, a, tmp->data);
+		if (cheapest > case_rrarb_a(b, a, tmp->data))
+			cheapest = case_rarrb_a(b, a, tmp->data);
 		tmp = tmp->prev;
 		size--;
 	}
-	return (min);
+	return (cheapest);
 }

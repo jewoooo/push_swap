@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:46 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/06 22:58:49 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/07 14:29:29 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	case_rrarrb_a(t_stack *b, t_stack *a, int num)
 
 	times = 0;
 	if (find_place_a(a, num) != 0)
-		times = a->size - find_place_a(a, num);
+		times = a->size - 1 - find_place_a(a, num);
 	if (times < (b->size - find_index(b, num)) && find_index(b, num) != 0)
-		times = (b->size - find_index(b, num));
+		times = (b->size - 1 - find_index(b, num));
 	return (times);
 }
 
@@ -40,7 +40,7 @@ int	case_rrarb_a(t_stack *b, t_stack *a, int num)
 
 	times = 0;
 	if (find_place_a(a, num) != 0)
-		times = b->size - find_index(b, num);
+		times = a->size - 1 - find_place_a(a, num);
 	times += find_index(b, num);
 	return (times);
 }
@@ -51,7 +51,7 @@ int	case_rarrb_a(t_stack *b, t_stack *a, int num)
 
 	times = 0;
 	if (find_index(b, num) != 0)
-		times = b->size - find_index(b, num);
+		times = b->size - 1 - find_index(b, num);
 	times += find_place_a(a, num);
 	return (times);
 }
