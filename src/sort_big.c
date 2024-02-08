@@ -6,48 +6,81 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:10:16 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/08 22:12:26 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/09 01:24:41 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+// 5500 ~ 6000
+// void	push_b_till_3(t_stack **a, t_stack **b)
+// {
+// 	int		times;
+// 	t_node	*tmp;
 
-void	push_b_till_3(t_stack **a, t_stack **b)
-{
-	int		times;
-	t_node	*tmp;
+// 	while ((*a)->size > 3 && is_sorted(*a) == 0)
+// 	{
+// 		tmp = (*a)->top;
+// 		times = calculate_cheapest_ab(*a, *b);
+// 		while (times >= 0)
+// 		{
+// 			if (times == case_rarb(*a, *b, tmp->data))
+// 				times = do_rarb(a, b, tmp->data, 'a');
+// 			else if (times == case_rrarrb(*a, *b, tmp->data))
+// 				times = do_rrarrb(a, b, tmp->data, 'a');
+// 			else if (times == case_rrarb(*a, *b, tmp->data))
+// 				times = do_rrarb(a, b, tmp->data, 'a');
+// 			else if (times == case_rarrb(*a, *b, tmp->data))
+// 				times = do_rarrb(a, b, tmp->data, 'a');
+// 			else
+// 				tmp = tmp->next;
+// 		}
+// 	}
+// }
+// 5500 ~ 6000
+// void	a_to_b(t_stack **a, t_stack **b)
+// {
+// 	if ((*a)->size > 3 && is_sorted(*a) == 0)
+// 		pb(a, b);
+// 	if ((*a)->size > 3 && is_sorted(*a) == 0)
+// 		pb(a, b);
+// 	if ((*a)->size > 3 && is_sorted(*a) == 0)
+// 		push_b_till_3(a, b);
+// 	if ((*a)->size == 3)
+// 		sort_three(a);
+// }
 
-	while ((*a)->size > 3 && is_sorted(*a) == 0)
-	{
-		tmp = (*a)->top;
-		times = calculate_cheapest_ab(*a, *b);
-		while (times >= 0)
-		{
-			if (times == case_rarb(*a, *b, tmp->data))
-				times = do_rarb(a, b, tmp->data, 'a');
-			else if (times == case_rrarrb(*a, *b, tmp->data))
-				times = do_rrarrb(a, b, tmp->data, 'a');
-			else if (times == case_rrarb(*a, *b, tmp->data))
-				times = do_rrarb(a, b, tmp->data, 'a');
-			else if (times == case_rarrb(*a, *b, tmp->data))
-				times = do_rarrb(a, b, tmp->data, 'a');
-			else
-				tmp = tmp->next;
-		}
-	}
-}
+// 5000 ~ 5500
+// void	a_to_b(t_stack **a, t_stack **b)
+// {
+// 	while ((*a)->size > 3 && is_sorted(*a) == 0)
+// 		pb(a, b);
+// 	if ((*a)->size == 3)
+// 		sort_three(a);
+// }
 
 void	a_to_b(t_stack **a, t_stack **b)
 {
-	if ((*a)->size > 3 && is_sorted(*a) == 0)
-		pb(a, b);
-	if ((*a)->size > 3 && is_sorted(*a) == 0)
-		pb(a, b);
-	if ((*a)->size > 3 && is_sorted(*a) == 0)
-		push_b_till_3(a, b);
+	int	pivot;
+
+	pivot = ((*a)->size + (*b)->size) / 3;
+	while ((*a)->size > pivot && is_sorted(*a) == 0)
+	{
+		if((*a)->top->data >= pivot * 2)
+			pb(a,b);
+		else if((*a)->top->data <= pivot)
+		{
+			pb(a,b);
+			rb(b);
+		}
+		else
+			ra(a);
+	}
+	while((*a)->size > 3 && is_sorted(*a) == 0 )
+		pb(a,b);
 	if ((*a)->size == 3)
 		sort_three(a);
 }
+
 
 void	b_to_a(t_stack **b, t_stack **a)
 {
