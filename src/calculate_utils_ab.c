@@ -6,11 +6,15 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:12:48 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/07 14:20:31 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/08 19:36:30 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+// Calculate times before push.
+// It will calculate times that need to rotate
+// or reverse rotate stack for pushed number.
 
 int	case_rarb(t_stack *a, t_stack *b, int num)
 {
@@ -29,7 +33,7 @@ int	case_rrarrb(t_stack *a, t_stack *b, int num)
 	times = 0;
 	if (find_place_b(b, num) != 0)
 		times = b->size - find_place_b(b, num);
-	if (times < (a->size - find_index(a, num) && find_index(a, num) != 0))
+	if ((times < a->size - find_index(a, num)) && find_index(a, num) != 0)
 		times = (a->size - find_index(a, num));
 	return (times);
 }

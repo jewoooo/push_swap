@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 22:44:49 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/07 15:39:02 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/08 16:22:05 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	do_rrarrb(t_stack **a, t_stack **b, int num, char c)
 			rrr(a, b);
 		while ((*b)->top->data != num)
 			rrb(b);
-		while (find_place_a(*a, c) > 0)
+		while (find_place_a(*a, num) > 0)
 			rra(a);
 		pa(a, b);
 	}

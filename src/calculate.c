@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:02:41 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/07 16:18:51 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/08 19:38:16 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	calculate_cheapest_ab(t_stack *a, t_stack *b)
 			min = case_rrarb(a, b, tmp->data);
 		tmp = tmp->prev;
 		size--;
-	}
+	} 
 	return (min);
 }
 
@@ -57,7 +57,7 @@ int	calculate_cheapest_ba(t_stack *b, t_stack *a)
 		if (cheapest > case_rarrb_a(b, a, tmp->data))
 			cheapest = case_rarrb_a(b, a, tmp->data);
 		if (cheapest > case_rrarb_a(b, a, tmp->data))
-			cheapest = case_rarrb_a(b, a, tmp->data);
+			cheapest = case_rrarb_a(b, a, tmp->data);
 		tmp = tmp->prev;
 		size--;
 	}

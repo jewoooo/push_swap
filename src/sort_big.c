@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:10:16 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/07 15:49:40 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/08 21:44:33 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ void	a_to_b(t_stack **a, t_stack **b)
 		pb(a, b);
 	if ((*a)->size > 3 && is_sorted(*a) == 0)
 		pb(a, b);
-	if ((*a)->size > 3 && is_sorted(*a) == 0)
-		push_b_till_3(a, b);
+	if ((*a)->size > 3 && is_sorted(*a) == 0)		push_b_till_3(a, b);
 	if ((*a)->size == 3)
 		sort_three(a);
 }
@@ -92,7 +91,7 @@ int	sort(t_stack **stack_a)
 		a_to_b(stack_a, &stack_b);
 		b_to_a(&stack_b, stack_a);
 		min_location = find_index(*stack_a, min(*stack_a));
-		if (min_location < (*stack_a)->size - 1 - min_location)
+		if (min_location < (*stack_a)->size - min_location)
 			while ((*stack_a)->top->data != min((*stack_a)))
 				ra(stack_a);
 		else

@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:13:48 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/07 16:15:25 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/08 21:33:44 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ int	find_place_b(t_stack *b, int num)
 		index = 0;
 		up = b->top;
 		down = up->prev;
-		while (up->data > num || num > down->data)
+		while ((up->data > num || num > down->data )&& index < b->size)
 		{
-			up = up->next;
-			down = down->next;
+			up = up->prev;
+			down = down->prev;
 			index++;
 		}
 	}
@@ -58,20 +58,22 @@ int	find_place_a(t_stack *a, int num)
 	t_node	*up;
 	t_node	*down;
 
-	if (num < a->top->data || num > a->bottom->data)
+	if (num < a->top->data && num > a->bottom->data)
 		index = 0;
-	else if (num > max(a) || num < min(a))
-		index = find_index(a, max(a));
+	if (num > max(a) || num < min(a))
+		index = find_index(a, min(a));
 	else
 	{
  		index = 0;
 		up = a->top;
 		down = a->top->prev;
-		while (up->data < num && num < down->data)
+		while (index < a->size)
 		{
+			index++;
+			if (up->data < num && down->data > num)
+				break ;
 			up = up->prev;
 			down = down->prev;
-			index++;
 		}
 	}
 	return (index);
