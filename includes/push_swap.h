@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:39:56 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/07 14:59:44 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/09 05:47:09 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ int		do_rrarrb(t_stack **a, t_stack **b, int num, char c);
 int		do_rrarb(t_stack **a, t_stack **b, int num, char c);
 int		do_rarrb(t_stack **a, t_stack **b, int num, char c);
 
-int		atoi_for_push_swap(const char *str);
+int		atoi_for_push_swap(const char *str, int *not_int_flag);
 int		is_sorted(t_stack *stack);
 int		is_duplicated(int *array, int n);
+int		is_space(char **s);
 
 int		parsing_to_stack(t_stack **a, int argc, char **argv);
 int		parsing_to_array(int **array, int argc, char **argv);

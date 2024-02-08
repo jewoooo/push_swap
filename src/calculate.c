@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:02:41 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/08 19:38:16 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/09 01:56:06 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	calculate_cheapest_ab(t_stack *a, t_stack *b)
 			min = case_rrarb(a, b, tmp->data);
 		tmp = tmp->prev;
 		size--;
-	} 
+	}
 	return (min);
 }
 

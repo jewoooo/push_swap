@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 06:07:05 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/07 15:37:40 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/09 01:58:39 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	pb(t_stack **stack_a, t_stack **stack_b)
 		return ;
 	ft_putendl_fd("pb", 1);
 }
-
 
 void logger(t_stack *a, t_stack *b)
 {

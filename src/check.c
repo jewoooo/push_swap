@@ -6,13 +6,19 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:59:37 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/08 23:51:01 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/09 05:47:08 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	atoi_for_push_swap(const char *str)
+long long	for_flag(int *flag)
+{
+	(*flag) = 1;
+	return (0);
+}
+
+int	atoi_for_push_swap(const char *str, int *not_int_flag)
 {
 	int			flag;
 	long long	res;
@@ -37,7 +43,7 @@ int	atoi_for_push_swap(const char *str)
 	if (flag == 1)
 		res *= (-1);
 	if (res > 2147483647 || res < -2147483648)
-		return (0);
+		res = for_flag(not_int_flag);
 	return ((int)res);
 }
 
@@ -79,4 +85,24 @@ int	is_sorted(t_stack *stack)
 		i++;
 	}
 	return (1);
+}
+
+int	is_space(char **s)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (s[i] != NULL)
+	{
+		j = 0;
+		while (s[i][j] != '\0')
+		{
+			if (s[i][j] == ' ')
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

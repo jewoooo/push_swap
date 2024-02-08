@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:12:34 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/06 15:05:49 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/09 05:47:06 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	duplicate_array(int **arr1, int *arr2, int n)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < n)
 	{
@@ -54,15 +54,19 @@ int	parsing_to_array(int **array, int size, char **argv)
 {
 	int		i;
 	int		tmp;
+	int		flag;
 
+	if (size != 1 && is_space(argv) == 1)
+		return (0);
 	(*array) = (int *)malloc(sizeof(int) * (size));
 	if ((*array) == NULL)
 		return (0);
 	i = 0;
 	while (i < size)
 	{
-		tmp = atoi_for_push_swap(argv[i]);
-		if (tmp == 0)
+		flag = 0;
+		tmp = atoi_for_push_swap(argv[i], &flag);
+		if (flag == 1)
 			return (0);
 		(*array)[i] = tmp;
 		i++;
@@ -74,12 +78,44 @@ int	parsing_to_array(int **array, int size, char **argv)
 	return (1);
 }
 
+char	**change_string(int *argc, char **argv)
+{
+	int		i;
+	int		cnt;
+	int		flag;
+	char	**nums;
+
+	i = 0;
+	flag = 0;
+	while ((*argv)[i] != '\0')
+	{
+		if ((*argv)[i] == ' ')
+			flag = 1;
+		i++;
+	}
+	if (flag == 1)
+	{
+		nums = ft_split(*argv, ' ');
+		if (nums == NULL)
+			return (NULL);
+		cnt = 0;
+		while (nums[cnt] != NULL)
+			cnt++;
+		(*argc) = cnt;
+		return (nums);
+	}
+	return (argv);
+}
+
 int	parsing_to_stack(t_stack **a, int argc, char **argv)
 {
 	int		i;
 	int		*array;
 
-	if (parsing_to_array(&array, argc, argv) == 0)
+	array = NULL;
+	if (argc == 1)
+		argv = change_string(&argc, argv);
+	if (parsing_to_array(&array, argc, argv) == 0 || argv == NULL)
 	{
 		if (array != NULL)
 			free(array);

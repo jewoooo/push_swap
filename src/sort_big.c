@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:10:16 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/09 01:24:41 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/09 02:13:54 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,25 +62,28 @@ void	a_to_b(t_stack **a, t_stack **b)
 {
 	int	pivot;
 
+	if ((*a)->size >= 5 && (*a)->size > 3 && is_sorted(*a) == 0)
+		pb(a, b);
+	if ((*a)->size >= 4 && (*a)->size > 3 && is_sorted(*a) == 0)
+		pb(a, b);
 	pivot = ((*a)->size + (*b)->size) / 3;
-	while ((*a)->size > pivot && is_sorted(*a) == 0)
+	while ((*a)->size > pivot && is_sorted(*a) == 0 && (*a)->size > 3)
 	{
-		if((*a)->top->data >= pivot * 2)
-			pb(a,b);
-		else if((*a)->top->data <= pivot)
+		if ((*a)->top->data >= pivot * 2)
+			pb(a, b);
+		else if ((*a)->top->data <= pivot)
 		{
-			pb(a,b);
+			pb(a, b);
 			rb(b);
 		}
 		else
 			ra(a);
 	}
-	while((*a)->size > 3 && is_sorted(*a) == 0 )
-		pb(a,b);
+	while ((*a)->size > 3 && is_sorted(*a) == 0)
+		pb(a, b);
 	if ((*a)->size == 3)
 		sort_three(a);
 }
-
 
 void	b_to_a(t_stack **b, t_stack **a)
 {
