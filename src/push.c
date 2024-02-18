@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 06:07:05 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/09 01:58:39 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/18 18:50:18 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,28 +72,28 @@ void	pb(t_stack **stack_a, t_stack **stack_b)
 	ft_putendl_fd("pb", 1);
 }
 
-void logger(t_stack *a, t_stack *b)
-{
-	t_node *curr;
-	
-	curr = a->top;
-	printf("----log start----\n");
-	printf("stack a\n\n");
-	for(int i =0; i< a->size; i++)
-	{
-		printf("%d:\n", curr->data);
-		curr = curr->prev;
-		if(curr == a->top)
-			break ;
-	}
-	curr = b->top;
-	printf("stack b\n\n");
-	for(int i =0; i< b->size; i++)
-	{
-		printf("%d:\n", curr->data);
-		curr = curr->prev;
-		if(curr == b->top)
-			break;
-	}
-	printf("----log end----\n");
-}
+// void logger(t_stack *a, t_stack *b)
+// {
+// 	t_node *curr;
+// 
+// 	curr = a->top;
+// 	printf("----log start----\n");
+// 	printf("stack a\n\n");
+// 	for(int i =0; i< a->size; i++)
+// 	{
+// 		printf("%d:\n", curr->data);
+// 		curr = curr->prev;
+// 		if(curr == a->top)
+// 			break ;
+// 	}
+// 	curr = b->top;
+// 	printf("stack b\n\n");
+// 	for(int i =0; i< b->size; i++)
+// 	{
+// 		printf("%d:\n", curr->data);
+// 		curr = curr->prev;
+// 		if(curr == b->top)
+// 			break;
+// 	}
+// 	printf("----log end----\n");
+// }

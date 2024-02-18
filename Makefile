@@ -6,12 +6,11 @@ MAKE_CUR = make -C
 LIBFT_DIR = ./libft
 LIBFT = ./libft/libft.a
 SRCS = ./src/main.c \
-		./src/calculate_utils_ab.c \
-		./src/calculate_utils_ba.c \
 		./src/calculate.c \
 		./src/check.c \
+		./src/check2.c \
 		./src/do.c \
-		./src/find_utils.c \
+		./src/math_utils.c \
 		./src/find.c \
 		./src/parsing.c \
 		./src/push.c \
@@ -22,7 +21,8 @@ SRCS = ./src/main.c \
 		./src/stack.c \
 		./src/swap.c
 OBJS = $(SRCS:.c=.o)
-INCLUDE = -L ./libft -lft
+OBJS_DIR = ./objs
+INCLUDE = -L./libft -lft
 
 all : $(NAME)
 

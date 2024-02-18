@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:12:34 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/09 05:47:06 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/18 20:29:13 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	parsing_to_array(int **array, int size, char **argv)
 	int		tmp;
 	int		flag;
 
-	if (size != 1 && is_space(argv) == 1)
+	if (size != 1 && (is_space(argv) == 1 || is_alpha(argv) == 1))
 		return (0);
 	(*array) = (int *)malloc(sizeof(int) * (size));
 	if ((*array) == NULL)
@@ -80,31 +80,19 @@ int	parsing_to_array(int **array, int size, char **argv)
 
 char	**change_string(int *argc, char **argv)
 {
-	int		i;
 	int		cnt;
-	int		flag;
 	char	**nums;
 
-	i = 0;
-	flag = 0;
-	while ((*argv)[i] != '\0')
-	{
-		if ((*argv)[i] == ' ')
-			flag = 1;
-		i++;
-	}
-	if (flag == 1)
-	{
-		nums = ft_split(*argv, ' ');
-		if (nums == NULL)
-			return (NULL);
-		cnt = 0;
-		while (nums[cnt] != NULL)
-			cnt++;
-		(*argc) = cnt;
-		return (nums);
-	}
-	return (argv);
+	if (check_string(*argv) == 1)
+		return (NULL);
+	nums = ft_split(*argv, ' ');
+	if (nums == NULL)
+		return (NULL);
+	cnt = 0;
+	while (nums[cnt] != NULL)
+		cnt++;
+	(*argc) = cnt;
+	return (nums);
 }
 
 int	parsing_to_stack(t_stack **a, int argc, char **argv)
@@ -115,14 +103,14 @@ int	parsing_to_stack(t_stack **a, int argc, char **argv)
 	array = NULL;
 	if (argc == 1)
 		argv = change_string(&argc, argv);
-	if (parsing_to_array(&array, argc, argv) == 0 || argv == NULL)
+	if (argv == NULL || parsing_to_array(&array, argc, argv) == 0)
 	{
 		if (array != NULL)
 			free(array);
 		return (0);
 	}
-	i = 0;
-	while (i < argc)
+	i = -1;
+	while (++i < argc)
 	{
 		if (push_front(a, array[i]) == 0)
 		{
@@ -130,7 +118,6 @@ int	parsing_to_stack(t_stack **a, int argc, char **argv)
 			free_stack(a);
 			return (0);
 		}
-		i++;
 	}
 	free(array);
 	return (1);

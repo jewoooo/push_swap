@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:13:48 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/09 01:55:48 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/18 18:48:53 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,7 @@ int	find_index(t_stack *stack, int num)
 	return (index);
 }
 
-int	find_place_b(t_stack *b, int num)
-{
-	int			index;
-	t_node		*up;
-	t_node		*down;
-
-	if (num > b->top->data && num < b->bottom->data)
-		index = 0;
-	else if (num > max(b) || num < min(b))
-		index = find_index(b, max(b));
-	else
-	{
-		index = 0;
-		up = b->top;
-		down = up->prev;
-		while ((up->data > num || num > down->data) && index < b->size)
-		{
-			up = up->prev;
-			down = down->prev;
-			index++;
-		}
-	}
-	return (index);
-}
-
-int	find_place_a(t_stack *a, int num)
+int	find_place(t_stack *a, int num)
 {
 	int		index;
 	t_node	*up;

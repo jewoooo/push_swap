@@ -6,100 +6,52 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 22:44:49 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/08 16:22:05 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/18 18:55:40 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	do_rarb(t_stack **a, t_stack **b, int num, char c)
+int	do_rarb(t_stack **a, t_stack **b, int num)
 {
-	if (c == 'a')
-	{
-		while ((*a)->top->data != num && find_place_b(*b, num) > 0)
-			rr(a, b);
-		while ((*a)->top->data != num)
-			ra(a);
-		while (find_place_b(*b, num) > 0)
-			rb(b);
-		pb(a, b);
-	}
-	else
-	{
-		while ((*b)->top->data != num && find_place_a(*a, num) > 0)
-			rr(a, b);
-		while ((*b)->top->data != num)
-			rb(b);
-		while (find_place_a(*a, num) > 0)
-			ra(a);
-		pa(a, b);
-	}
+	while ((*b)->top->data != num && find_place(*a, num) > 0)
+		rr(a, b);
+	while ((*b)->top->data != num)
+		rb(b);
+	while (find_place(*a, num) > 0)
+		ra(a);
+	pa(a, b);
 	return (-1);
 }
 
-int	do_rrarrb(t_stack **a, t_stack **b, int num, char c)
+int	do_rrarrb(t_stack **a, t_stack **b, int num)
 {
-	if (c == 'a')
-	{
-		while ((*a)->top->data != num && find_place_b(*b, num) > 0)
-			rrr(a, b);
-		while ((*a)->top->data != num)
-			rra(a);
-		while (find_place_b(*b, num) > 0)
-			rrb(b);
-		pb(a, b);
-	}
-	else
-	{
-		while ((*b)->top->data != num && find_place_a(*a, num) > 0)
-			rrr(a, b);
-		while ((*b)->top->data != num)
-			rrb(b);
-		while (find_place_a(*a, num) > 0)
-			rra(a);
-		pa(a, b);
-	}
+	while ((*b)->top->data != num && find_place(*a, num) > 0)
+		rrr(a, b);
+	while ((*b)->top->data != num)
+		rrb(b);
+	while (find_place(*a, num) > 0)
+		rra(a);
+	pa(a, b);
 	return (-1);
 }
 
-int	do_rrarb(t_stack **a, t_stack **b, int num, char c)
+int	do_rrarb(t_stack **a, t_stack **b, int num)
 {
-	if (c == 'a')
-	{
-		while ((*a)->top->data != num)
-			rra(a);
-		while (find_place_b(*b, num) > 0)
-			rb(b);
-		pb(a, b);
-	}
-	else
-	{
-		while (find_place_a(*a, num) > 0)
-			rra(a);
-		while ((*b)->top->data != num)
-			rb(b);
-		pa(a, b);
-	}
+	while (find_place(*a, num) > 0)
+		rra(a);
+	while ((*b)->top->data != num)
+		rb(b);
+	pa(a, b);
 	return (-1);
 }
 
-int	do_rarrb(t_stack **a, t_stack **b, int num, char c)
+int	do_rarrb(t_stack **a, t_stack **b, int num)
 {
-	if (c == 'a')
-	{
-		while ((*a)->top->data != num)
-			ra(a);
-		while (find_place_b(*b, num) > 0)
-			rrb(b);
-		pb(a, b);
-	}
-	else
-	{
-		while (find_place_a(*a, num) > 0)
-			ra(a);
-		while ((*b)->top->data != num)
-			rrb(b);
-		pa(a, b);
-	}
+	while (find_place(*a, num) > 0)
+		ra(a);
+	while ((*b)->top->data != num)
+		rrb(b);
+	pa(a, b);
 	return (-1);
 }

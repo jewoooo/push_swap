@@ -6,37 +6,54 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:02:41 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/09 01:56:06 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/18 18:48:01 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// without 1 push
-
-int	calculate_cheapest_ab(t_stack *a, t_stack *b)
+int	case_rarb(t_stack *b, t_stack *a, int num)
 {
-	int		min;
-	int		size;
-	t_node	*tmp;
+	int	times;
 
-	size = a->size;
-	tmp = a->top;
-	min = case_rrarrb(a, b, tmp->data);
-	while (size > 0)
-	{
-		if (min > case_rarb(a, b, tmp->data))
-			min = case_rarb(a, b, tmp->data);
-		if (min > case_rrarrb(a, b, tmp->data))
-			min = case_rrarrb(a, b, tmp->data);
-		if (min > case_rarrb(a, b, tmp->data))
-			min = case_rarrb(a, b, tmp->data);
-		if (min > case_rrarb(a, b, tmp->data))
-			min = case_rrarb(a, b, tmp->data);
-		tmp = tmp->prev;
-		size--;
-	}
-	return (min);
+	times = find_place(a, num);
+	if (times < find_index(b, num))
+		times = find_index(b, num);
+	return (times);
+}
+
+int	case_rrarrb(t_stack *b, t_stack *a, int num)
+{
+	int	times;
+
+	times = 0;
+	if (find_place(a, num) != 0)
+		times = a->size - find_place(a, num);
+	if (times < (b->size - find_index(b, num)) && find_index(b, num) != 0)
+		times = (b->size - find_index(b, num));
+	return (times);
+}
+
+int	case_rrarb(t_stack *b, t_stack *a, int num)
+{
+	int	times;
+
+	times = 0;
+	if (find_place(a, num) != 0)
+		times = a->size - find_place(a, num);
+	times += find_index(b, num);
+	return (times);
+}
+
+int	case_rarrb(t_stack *b, t_stack *a, int num)
+{
+	int	times;
+
+	times = 0;
+	if (find_index(b, num) != 0)
+		times = b->size - find_index(b, num);
+	times += find_place(a, num);
+	return (times);
 }
 
 int	calculate_cheapest_ba(t_stack *b, t_stack *a)
@@ -47,17 +64,17 @@ int	calculate_cheapest_ba(t_stack *b, t_stack *a)
 
 	tmp = b->top;
 	size = b->size;
-	cheapest = case_rrarrb_a(b, a, tmp->data);
+	cheapest = case_rrarrb(b, a, tmp->data);
 	while (size > 0)
 	{
-		if (cheapest > case_rarb_a(b, a, tmp->data))
-			cheapest = case_rarb_a(b, a, tmp->data);
-		if (cheapest > case_rrarrb_a(b, a, tmp->data))
-			cheapest = case_rrarrb_a(b, a, tmp->data);
-		if (cheapest > case_rarrb_a(b, a, tmp->data))
-			cheapest = case_rarrb_a(b, a, tmp->data);
-		if (cheapest > case_rrarb_a(b, a, tmp->data))
-			cheapest = case_rrarb_a(b, a, tmp->data);
+		if (cheapest > case_rarb(b, a, tmp->data))
+			cheapest = case_rarb(b, a, tmp->data);
+		if (cheapest > case_rrarrb(b, a, tmp->data))
+			cheapest = case_rrarrb(b, a, tmp->data);
+		if (cheapest > case_rarrb(b, a, tmp->data))
+			cheapest = case_rarrb(b, a, tmp->data);
+		if (cheapest > case_rrarb(b, a, tmp->data))
+			cheapest = case_rrarb(b, a, tmp->data);
 		tmp = tmp->prev;
 		size--;
 	}

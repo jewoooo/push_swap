@@ -6,57 +6,11 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:10:16 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/09 02:13:54 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/18 18:46:33 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-// 5500 ~ 6000
-// void	push_b_till_3(t_stack **a, t_stack **b)
-// {
-// 	int		times;
-// 	t_node	*tmp;
-
-// 	while ((*a)->size > 3 && is_sorted(*a) == 0)
-// 	{
-// 		tmp = (*a)->top;
-// 		times = calculate_cheapest_ab(*a, *b);
-// 		while (times >= 0)
-// 		{
-// 			if (times == case_rarb(*a, *b, tmp->data))
-// 				times = do_rarb(a, b, tmp->data, 'a');
-// 			else if (times == case_rrarrb(*a, *b, tmp->data))
-// 				times = do_rrarrb(a, b, tmp->data, 'a');
-// 			else if (times == case_rrarb(*a, *b, tmp->data))
-// 				times = do_rrarb(a, b, tmp->data, 'a');
-// 			else if (times == case_rarrb(*a, *b, tmp->data))
-// 				times = do_rarrb(a, b, tmp->data, 'a');
-// 			else
-// 				tmp = tmp->next;
-// 		}
-// 	}
-// }
-// 5500 ~ 6000
-// void	a_to_b(t_stack **a, t_stack **b)
-// {
-// 	if ((*a)->size > 3 && is_sorted(*a) == 0)
-// 		pb(a, b);
-// 	if ((*a)->size > 3 && is_sorted(*a) == 0)
-// 		pb(a, b);
-// 	if ((*a)->size > 3 && is_sorted(*a) == 0)
-// 		push_b_till_3(a, b);
-// 	if ((*a)->size == 3)
-// 		sort_three(a);
-// }
-
-// 5000 ~ 5500
-// void	a_to_b(t_stack **a, t_stack **b)
-// {
-// 	while ((*a)->size > 3 && is_sorted(*a) == 0)
-// 		pb(a, b);
-// 	if ((*a)->size == 3)
-// 		sort_three(a);
-// }
 
 void	a_to_b(t_stack **a, t_stack **b)
 {
@@ -96,14 +50,14 @@ void	b_to_a(t_stack **b, t_stack **a)
 		times = calculate_cheapest_ba(*b, *a);
 		while (times >= 0)
 		{
-			if (times == case_rarb_a(*b, *a, tmp->data))
-				times = do_rarb(a, b, tmp->data, 'b');
-			else if (times == case_rrarrb_a(*b, *a, tmp->data))
-				times = do_rrarrb(a, b, tmp->data, 'b');
-			else if (times == case_rrarb_a(*b, *a, tmp->data))
-				times = do_rrarb(a, b, tmp->data, 'b');
-			else if (times == case_rarrb_a(*b, *a, tmp->data))
-				times = do_rarrb(a, b, tmp->data, 'b');
+			if (times == case_rarb(*b, *a, tmp->data))
+				times = do_rarb(a, b, tmp->data);
+			else if (times == case_rrarrb(*b, *a, tmp->data))
+				times = do_rrarrb(a, b, tmp->data);
+			else if (times == case_rrarb(*b, *a, tmp->data))
+				times = do_rrarb(a, b, tmp->data);
+			else if (times == case_rarrb(*b, *a, tmp->data))
+				times = do_rarrb(a, b, tmp->data);
 			else
 				tmp = tmp->next;
 		}
