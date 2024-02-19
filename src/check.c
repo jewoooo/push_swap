@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:59:37 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/09 05:47:08 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/19 14:03:56 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,22 +87,33 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-int	is_space(char **s)
+int	is_digit(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+int	wd_cnt(char **s)
 {
 	int	i;
 	int	j;
+	int	cnt;
 
-	i = 0;
-	while (s[i] != NULL)
+	i = -1;
+	while (s[++i] != NULL)
 	{
-		j = 0;
-		while (s[i][j] != '\0')
+		j = -1;
+		cnt = 0;
+		while (s[i][++j] != '\0')
 		{
-			if (s[i][j] == ' ')
-				return (1);
-			j++;
+			if ((j == 0 && is_digit(s[i][j]) == 1) \
+				|| (s[i][j] == ' ' && is_digit(s[i + 1][j]) == 1
+				&& s[i + 1][j] != '\0'))
+				cnt++;
 		}
-		i++;
+		if (cnt != 1)
+			return (cnt);
 	}
-	return (0);
+	return (1);
 }

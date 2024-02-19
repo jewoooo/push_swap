@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 19:08:04 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/18 20:42:34 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/19 12:52:39 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,21 @@
 int	check_string(char *s)
 {
 	int	i;
+	int	digit_flag;
 
 	i = -1;
+	digit_flag = 0;
 	while (s[++i] != '\0')
 	{
 		if ((s[i] >= 'a' && s[i] <= 'z')
 			|| (s[i] >= 'A' && s[i] <= 'Z'))
-			return (1);
+			return (0);
+		if (s[i] >= '0' && s[i] <= '9')
+			digit_flag = 1;
 	}
-	return (0);
+	if (digit_flag == 0)
+		return (0);
+	return (1);
 }
 
 int	is_alpha(char **s)

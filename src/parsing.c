@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:12:34 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/18 20:29:13 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/19 13:06:43 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	parsing_to_array(int **array, int size, char **argv)
 	int		tmp;
 	int		flag;
 
-	if (size != 1 && (is_space(argv) == 1 || is_alpha(argv) == 1))
+	if (size != 1 && (is_alpha(argv) == 1 || wd_cnt(argv) != 1))
 		return (0);
 	(*array) = (int *)malloc(sizeof(int) * (size));
 	if ((*array) == NULL)
@@ -83,7 +83,7 @@ char	**change_string(int *argc, char **argv)
 	int		cnt;
 	char	**nums;
 
-	if (check_string(*argv) == 1)
+	if (check_string(*argv) == 0)
 		return (NULL);
 	nums = ft_split(*argv, ' ');
 	if (nums == NULL)

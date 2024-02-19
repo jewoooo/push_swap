@@ -21,7 +21,6 @@ SRCS = ./src/main.c \
 		./src/stack.c \
 		./src/swap.c
 OBJS = $(SRCS:.c=.o)
-OBJS_DIR = ./objs
 INCLUDE = -L./libft -lft
 
 all : $(NAME)
