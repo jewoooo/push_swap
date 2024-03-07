@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:39:56 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/19 13:18:25 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/03/07 18:32:26 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <unistd.h>
 # include "../libft/libft.h"
 # include <stdio.h>
+
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 typedef struct s_node
 {
@@ -48,12 +51,11 @@ int		do_rrarrb(t_stack **a, t_stack **b, int num);
 int		do_rrarb(t_stack **a, t_stack **b, int num);
 int		do_rarrb(t_stack **a, t_stack **b, int num);
 
-int		atoi_for_push_swap(const char *str, int *not_int_flag);
+int		atoi_for_push_swap(char *str, int *not_int_flag);
 int		is_sorted(t_stack *stack);
 int		is_duplicated(int *array, int n);
-int		is_alpha(char **s);
 int		check_string(char *s);
-int		wd_cnt(char **s);
+int		check_argv(char **s);
 
 int		parsing_to_stack(t_stack **a, int argc, char **argv);
 int		parsing_to_array(int **array, int argc, char **argv);

@@ -28,20 +28,20 @@ all : $(NAME)
 $(NAME) : make_mandatory
 
 make_mandatory : $(OBJS)
-	@ $(MAKE_CUR) $(LIBFT_DIR) bonus > /dev/null
+	$(MAKE_CUR) $(LIBFT_DIR) bonus
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDE)
-	touch make_mandatory
+	@ touch make_mandatory
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@ $(CC) $(CFLAGS) -c $< -o $@
 
 clean :
-	@ $(MAKE_CUR) $(LIBFT_DIR) clean > /dev/null
+	$(MAKE_CUR) $(LIBFT_DIR) clean
 	$(RM) $(OBJS)
-	$(RM) make_mandatory
+	@ $(RM) make_mandatory
 
 fclean : clean
-	@ $(MAKE_CUR) $(LIBFT_DIR) fclean > /dev/null
+	$(MAKE_CUR) $(LIBFT_DIR) fclean
 	$(RM) $(NAME)
 
 re : fclean all

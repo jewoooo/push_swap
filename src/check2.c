@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 19:08:04 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/19 12:52:39 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/03/07 18:07:47 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int	check_string(char *s)
 		if ((s[i] >= 'a' && s[i] <= 'z')
 			|| (s[i] >= 'A' && s[i] <= 'Z'))
 			return (0);
+		if ((s[i] < '0' || s[i] > '9')
+			&& s[i] != ' ' && s[i] != '+' && s[i] != '-')
+			return (0);
 		if (s[i] >= '0' && s[i] <= '9')
 			digit_flag = 1;
 	}
@@ -32,23 +35,42 @@ int	check_string(char *s)
 	return (1);
 }
 
-int	is_alpha(char **s)
+int	is_duplicated(int *array, int n)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (s[i] != NULL)
+	while (i < n - 1)
 	{
-		j = 0;
-		while (s[i][j] != '\0')
+		j = i + 1;
+		while (j < n)
 		{
-			if ((s[i][j] >= 'a' && s[i][j] <= 'z')
-				|| (s[i][j] >= 'A' && s[i][j] <= 'Z'))
+			if (array[i] == array[j])
 				return (1);
 			j++;
 		}
 		i++;
 	}
 	return (0);
+}
+
+int	is_sorted(t_stack *stack)
+{
+	t_node	*tmp1;
+	t_node	*tmp2;
+	int		i;
+
+	tmp1 = stack->bottom;
+	tmp2 = stack->bottom->next;
+	i = 1;
+	while (i < stack->size)
+	{
+		if (tmp1->data < tmp2->data)
+			return (0);
+		tmp1 = tmp1->next;
+		tmp2 = tmp2->next;
+		i++;
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:12:34 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/19 13:06:43 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/02/19 15:09:25 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	parsing_to_array(int **array, int size, char **argv)
 	int		tmp;
 	int		flag;
 
-	if (size != 1 && (is_alpha(argv) == 1 || wd_cnt(argv) != 1))
+	if (size != 1 && check_argv(argv) == 0)
 		return (0);
 	(*array) = (int *)malloc(sizeof(int) * (size));
 	if ((*array) == NULL)
