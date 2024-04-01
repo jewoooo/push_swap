@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:13:48 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/18 18:48:53 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/03/28 17:25:52 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	find_place(t_stack *a, int num)
 
 	if (num < a->top->data && num > a->bottom->data)
 		index = 0;
-	else if (num > max(a) || num < min(a))
-		index = find_index(a, min(a));
+	else if (num > s_max(a) || num < s_min(a))
+		index = find_index(a, s_min(a));
 	else
 	{
 		index = 0;

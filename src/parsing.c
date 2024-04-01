@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:12:34 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/19 15:09:25 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/03/28 17:54:19 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	change_to_index(int **array, int size)
 	int	j;
 	int	*tmp;
 
-	tmp = (int *)calloc(size, sizeof(int));
+	tmp = (int *)ft_calloc(size, sizeof(int));
 	if (tmp == NULL)
 		return (0);
 	i = 0;
@@ -50,7 +50,7 @@ int	change_to_index(int **array, int size)
 	return (1);
 }
 
-int	parsing_to_array(int **array, int size, char **argv)
+int	parsing_to_array(int **array, int size, char **argv, int *flag_for_malloc)
 {
 	int		i;
 	int		tmp;
@@ -61,15 +61,16 @@ int	parsing_to_array(int **array, int size, char **argv)
 	(*array) = (int *)malloc(sizeof(int) * (size));
 	if ((*array) == NULL)
 		return (0);
-	i = 0;
-	while (i < size)
+	i = -1;
+	while (++i < size)
 	{
 		flag = 0;
 		tmp = atoi_for_push_swap(argv[i], &flag);
+		if (*flag_for_malloc == 1)
+			free(argv[i]);
 		if (flag == 1)
 			return (0);
 		(*array)[i] = tmp;
-		i++;
 	}
 	if (is_duplicated(*array, size) == 1)
 		return (0);
@@ -78,11 +79,13 @@ int	parsing_to_array(int **array, int size, char **argv)
 	return (1);
 }
 
-char	**change_string(int *argc, char **argv)
+char	**change_string(int *ptr_argc, char **argv, int *flag)
 {
 	int		cnt;
 	char	**nums;
 
+	if (*ptr_argc != 1)
+		return (argv);
 	if (check_string(*argv) == 0)
 		return (NULL);
 	nums = ft_split(*argv, ' ');
@@ -91,7 +94,8 @@ char	**change_string(int *argc, char **argv)
 	cnt = 0;
 	while (nums[cnt] != NULL)
 		cnt++;
-	(*argc) = cnt;
+	*ptr_argc = cnt;
+	*flag = 1;
 	return (nums);
 }
 
@@ -99,16 +103,14 @@ int	parsing_to_stack(t_stack **a, int argc, char **argv)
 {
 	int		i;
 	int		*array;
+	int		flag_for_malloc;
 
 	array = NULL;
-	if (argc == 1)
-		argv = change_string(&argc, argv);
-	if (argv == NULL || parsing_to_array(&array, argc, argv) == 0)
-	{
-		if (array != NULL)
-			free(array);
-		return (0);
-	}
+	flag_for_malloc = 0;
+	argv = change_string(&argc, argv, &flag_for_malloc);
+	if (argv == NULL
+		|| parsing_to_array(&array, argc, argv, &flag_for_malloc) == 0)
+		return (free_all(&array, &argv, &flag_for_malloc));
 	i = -1;
 	while (++i < argc)
 	{
@@ -120,5 +122,7 @@ int	parsing_to_stack(t_stack **a, int argc, char **argv)
 		}
 	}
 	free(array);
+	if (flag_for_malloc == 1)
+		free(argv);
 	return (1);
 }

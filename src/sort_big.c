@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:10:16 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/18 18:46:33 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/03/28 18:42:00 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,21 @@ void	a_to_b(t_stack **a, t_stack **b)
 {
 	int	pivot;
 
-	if ((*a)->size >= 5 && (*a)->size > 3 && is_sorted(*a) == 0)
-		pb(a, b);
-	if ((*a)->size >= 4 && (*a)->size > 3 && is_sorted(*a) == 0)
-		pb(a, b);
-	pivot = ((*a)->size + (*b)->size) / 3;
-	while ((*a)->size > pivot && is_sorted(*a) == 0 && (*a)->size > 3)
+	if ((*a)->size > 3 && is_sorted(*a) == 0)
 	{
-		if ((*a)->top->data >= pivot * 2)
-			pb(a, b);
-		else if ((*a)->top->data <= pivot)
+		pivot = (*a)->size / 3;
+		while ((*a)->size > 3 && (*a)->size > pivot && is_sorted(*a) == 0)
 		{
-			pb(a, b);
-			rb(b);
+			if ((*a)->top->data >= pivot * 2)
+				pb(a, b);
+			else if ((*a)->top->data <= pivot)
+			{
+				pb(a, b);
+				rb(b);
+			}
+			else
+				ra(a);
 		}
-		else
-			ra(a);
 	}
 	while ((*a)->size > 3 && is_sorted(*a) == 0)
 		pb(a, b);
@@ -59,7 +58,7 @@ void	b_to_a(t_stack **b, t_stack **a)
 			else if (times == case_rarrb(*b, *a, tmp->data))
 				times = do_rarrb(a, b, tmp->data);
 			else
-				tmp = tmp->next;
+				tmp = tmp->prev;
 		}
 	}
 	if ((*b)->size == 0)
@@ -81,12 +80,12 @@ int	sort(t_stack **stack_a)
 			return (0);
 		a_to_b(stack_a, &stack_b);
 		b_to_a(&stack_b, stack_a);
-		min_location = find_index(*stack_a, min(*stack_a));
+		min_location = find_index(*stack_a, s_min(*stack_a));
 		if (min_location < (*stack_a)->size - min_location)
-			while ((*stack_a)->top->data != min((*stack_a)))
+			while ((*stack_a)->top->data != s_min((*stack_a)))
 				ra(stack_a);
 		else
-			while ((*stack_a)->top->data != min((*stack_a)))
+			while ((*stack_a)->top->data != s_min((*stack_a)))
 				rra(stack_a);
 	}
 	if (is_sorted(*stack_a) == 0)

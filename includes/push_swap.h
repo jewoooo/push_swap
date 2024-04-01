@@ -6,7 +6,7 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:39:56 by jewlee            #+#    #+#             */
-/*   Updated: 2024/03/07 18:32:26 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/03/28 17:25:30 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,13 @@ int		check_string(char *s);
 int		check_argv(char **s);
 
 int		parsing_to_stack(t_stack **a, int argc, char **argv);
-int		parsing_to_array(int **array, int argc, char **argv);
+int		parsing_to_array(int **array, int size,
+			char **argv, int *flag_for_malloc);
 
-int		max(t_stack *stack);
-int		min(t_stack *stack);
+int		free_all(int **array, char ***argv, int *flag_for_malloc);
+
+int		s_max(t_stack *stack);
+int		s_min(t_stack *stack);
 
 int		find_index(t_stack *stack, int num);
 int		find_place(t_stack *a, int num);

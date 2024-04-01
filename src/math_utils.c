@@ -6,13 +6,13 @@
 /*   By: jewlee <jewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:51 by jewlee            #+#    #+#             */
-/*   Updated: 2024/02/18 18:49:30 by jewlee           ###   ########.fr       */
+/*   Updated: 2024/03/28 17:25:22 by jewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	max(t_stack *stack)
+int	s_max(t_stack *stack)
 {
 	int		num;
 	t_node	*tmp;
@@ -29,7 +29,7 @@ int	max(t_stack *stack)
 	return (num);
 }
 
-int	min(t_stack *stack)
+int	s_min(t_stack *stack)
 {
 	int		num;
 	t_node	*tmp;
